@@ -1,0 +1,28 @@
+@import "../utils/variables.scss";
+
+#track {
+    display: flex;
+
+    .container {
+        margin: 50px 80px;
+        flex: 1;
+
+        header{
+            #tabs{
+                text-align: center;
+            }
+        }
+
+        .tracks li {
+            display: block;
+        }
+    }
+}
+
+@media only screen and (max-width:848px) {
+    #track {
+        .container {
+            margin: 50px 30px;
+        }
+    }
+}

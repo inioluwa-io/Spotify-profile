@@ -1,0 +1,36 @@
+.btn {
+    outline: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: montserrat;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background .35s ease, border .35s ease, color .35s ease;
+    cursor: pointer;
+    background: transparent;
+
+    &.btn-sm {
+        padding: 10px 11px;
+    }
+
+    &.btn-md {
+        padding: 10px 21px;
+    }
+
+    &.btn-lg {
+        padding: 14px 27px;
+    }
+
+    &.btn-rounded {
+        border-radius: 25px;
+    }
+
+    &.btn-primary {
+        background: $green;
+        border: 1px solid transparent;
+
+        &:hover {
+            background: $deep-green;
+        }
+    }
+}

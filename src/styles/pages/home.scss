@@ -1,0 +1,174 @@
+@import "../utils/variables.scss";
+
+#home {
+    display: flex;
+
+    .container {
+        margin: 50px 0 80px 0;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 27rem 1fr 1fr;
+        grid-template-areas: "profile aside aside";
+
+        .profile {
+            grid-area: profile / profile / profile;
+            margin: 30px 60px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: fixed;
+            align-items: center;
+
+            .image {
+                height: 150px;
+                width: 150px;
+                margin: 10px;
+                border-radius: 100%;
+                overflow: hidden;
+                position: relative;
+
+                &.border {
+                    border: 3px solid #fff;
+
+                    svg {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                img {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    max-height: 130%;
+                    max-width: 130%;
+                    position: absolute;
+                }
+            }
+
+            .profile_details {
+                margin: 15px;
+
+                h2 {
+                    font-size: 28px;
+                }
+
+                ul {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 15px;
+
+                    li {
+                        display: inline-block;
+                        margin-right: 30px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        span {
+                            color: $green;
+                        }
+
+                        p {
+                            margin-top: 2px;
+                            font-family: 'Nunito sans';
+                            text-transform: uppercase;
+                            font-size: 12px;
+                            color: $dimgray;
+                        }
+                    }
+                }
+            }
+        }
+
+        aside {
+            grid-area: aside / aside /aside;
+            margin: 30px 80px 30px 30px;
+
+            .title {
+                display: flex;
+                align-items: center;
+                font-size: 23px;
+                font-weight: bold;
+                font-family: Montserrat;
+            }
+
+            ul {
+                margin-top: 15px;
+
+                li {
+                    display: flex;
+                }
+            }
+
+            #artists {
+                margin-top: 60px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1125px) {
+    #home {
+        .container {
+            grid-template-columns: 24rem 1fr 1fr;
+
+            .profile {
+                margin: 30px 45px;
+            }
+
+            aside {
+                margin: 30px 50px 30px 30px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:848px) {
+    #home {
+        .container {
+            margin: 50px 0 50px 0;
+            grid-template-columns: none;
+            grid-template-areas: "profile"
+                "aside";
+
+            .profile {
+                position: relative;
+            }
+
+            aside {
+                margin: 30px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:512px) {
+    #home {
+        .container {
+            margin: 50px 0 50px 0;
+            grid-template-columns: none;
+            grid-template-areas: "profile"
+                "aside";
+
+            .profile {
+                position: relative;
+                margin: 30px 20px;
+
+                .image {
+                    height: 120px;
+                    width: 120px;
+                }
+
+
+            }
+
+            aside {
+                margin: 30px 20px;
+            }
+        }
+    }
+}
