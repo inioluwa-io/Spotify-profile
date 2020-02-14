@@ -6,9 +6,13 @@
     .container {
         margin: 50px 80px;
         flex: 1;
+        position: relative;
+        width: calc(100% - 160px);
 
-        header{
-            #tabs{
+        header {
+            display: flex;
+            justify-content: space-between;
+            #tabs {
                 text-align: center;
             }
         }
@@ -22,7 +26,18 @@
 @media only screen and (max-width:848px) {
     #track {
         .container {
-            margin: 50px 30px;
+            margin: 50px 25px;
+            width: calc(100% - 50px);
+        }
+    }
+}
+
+@media only screen and (max-width:768px) {
+    #track {
+        .container header #tabs {
+            text-align: center;
+            display: flex;
+            justify-content: center;
         }
     }
 }

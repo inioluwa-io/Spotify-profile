@@ -2,10 +2,12 @@
 
 #home {
     display: flex;
+    width: 100%;
 
     .container {
         margin: 50px 0 80px 0;
-        flex: 1;
+        // flex: 1;
+        width: calc(100% - 0px);
         display: grid;
         grid-template-columns: 27rem 1fr 1fr;
         grid-template-areas: "profile aside aside";
@@ -131,6 +133,7 @@
     #home {
         .container {
             margin: 50px 0 50px 0;
+            width: calc(100% - 0px);
             grid-template-columns: none;
             grid-template-areas: "profile"
                 "aside";

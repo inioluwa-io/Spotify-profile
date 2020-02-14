@@ -26,6 +26,7 @@ const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
       <SEO title="Top tracks | Spotify profile" description="" />
       <div className="container">
         <header>
+          <h1>Top Tracks</h1>
           <Tab
             tabs={["All Time", "Last 4 weeks", "Last 6 months"]}
             getSelectedTab={(index: number) => {

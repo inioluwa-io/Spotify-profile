@@ -64,7 +64,8 @@ a {
 .page-container {
   background-color: #181818;
   min-height: 100vh;
-  width: 100%;
+  // width: 100vw;
+  overflow: hidden;
   grid-area: main / main / main / main;
 }
 
