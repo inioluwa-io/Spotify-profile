@@ -19,7 +19,7 @@ const Track: React.FC<any> = ({ tracks }) => {
     <ul className="tracks">
       {tracks.map((track: any, index: number) => (
         <li key={index}>
-          <Link to="track/">
+          <Link to={`track/${index}`}>
             <div className="row">
               <div className="image">
                 <img src={track.albumArt} alt="" />

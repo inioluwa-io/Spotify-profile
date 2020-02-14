@@ -1,34 +1,34 @@
 import React, { useState } from "react";
-import "../../../styles/pages/tracks.scss";
+import "../../../styles/pages/artist.scss";
 import SEO from "../../../components/seo";
 import Tab from "../../../components/tabs";
-import Track from "../../../components/track";
+import Artist from "../../../components/artist";
 
-interface ITracks {
-  tracks: [any];
+interface IArtist {
+  artists: [any];
 }
 
 interface IToggleTabs {
   selectedTab: number;
   data: [any];
 }
-const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
+const ArtistWrapper: React.FC<any> = ({ artists }: IArtist) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const ToggleTabs: React.FC<any> = () => {
     console.log(selectedTab);
-    if (selectedTab === 0) return <Track tracks={tracks} />;
-    else if (selectedTab === 1) return <Track tracks={tracks} />;
-    else if (selectedTab === 2) return <Track tracks={tracks} />;
+    if (selectedTab === 0) return <Artist artists={artists} />;
+    else if (selectedTab === 1) return <Artist artists={artists} />;
+    else if (selectedTab === 2) return <Artist artists={artists} />;
     else return <></>;
   };
 
   return (
-    <main className="page-container" id="track">
+    <main className="page-container" id="artist">
       <SEO title="Top tracks | Spotify profile" description="" />
       <div className="container">
         <header>
-          <h1>Top Tracks</h1>
+          <h1>Top Artists</h1>
           <Tab
             tabs={["All Time", "Last 4 weeks", "Last 6 months"]}
             getSelectedTab={(index: number) => {
@@ -37,9 +37,9 @@ const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
             }}
           />
         </header>
-        <ToggleTabs selectedTab={selectedTab} data={tracks} />
+        <ToggleTabs selectedTab={selectedTab} />
       </div>
     </main>
   );
 };
-export default TracksWrapper;
+export default ArtistWrapper;

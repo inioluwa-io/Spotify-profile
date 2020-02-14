@@ -6,6 +6,9 @@ import Home from "./private/home";
 import Tracks from "./private/tracks";
 import Login from "./public/login";
 import Navbar from "../components/navbar";
+import Artists from "./private/artists";
+import Playlists from "./private/playlists";
+import TrackDetails from "./private/trackDetails";
 
 // Gets user authenticated status
 const checkAuth = (): boolean => {
@@ -72,10 +75,10 @@ const Routes: React.FC = () => {
         {checkAuth() && <Navbar />}
         <Switch>
           <AuthRoute exact path="/" component={Home} />
-          <AuthRoute path="/artists" component={Home} />
+          <AuthRoute path="/artists" component={Artists} />
           <AuthRoute path="/tracks" component={Tracks} />
-          <AuthRoute path="/ratings" component={Home} />
-          <AuthRoute path="/playlists" component={Home} />
+          <AuthRoute path="/track/:id" component={TrackDetails} />
+          <AuthRoute path="/playlists" component={Playlists} />
           <AuthRouteRedirect to="/" path="/login" component={Login} />
 
           {/* Private routes */}

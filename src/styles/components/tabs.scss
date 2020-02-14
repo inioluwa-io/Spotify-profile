@@ -16,13 +16,23 @@
     }
 
     &:first-child {
+        border-right: none;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
     }
 
     &.selected {
         background: $green;
-        color: $white;
+        color: $deep-black;
         border: 1px solid transparent;
+
+        &:last-child {
+            border-left: none;
+        }
+    
+        &:first-child {
+            border-right: none;
+        }
+    
     }
 }

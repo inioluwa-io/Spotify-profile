@@ -1,7 +1,12 @@
 @import "../utils/variables.scss";
 
-#track {
+#artist {
     display: flex;
+
+    .grid {
+        margin-bottom: 30px;
+    }
+
 
     .container {
         margin: 50px 80px;
@@ -28,16 +33,17 @@
 }
 
 @media only screen and (max-width:848px) {
-    #track {
+    #artist {
         .container {
             margin: 50px 20px;
+            margin-bottom: 70px;
             width: calc(100% - 50px);
         }
     }
 }
 
 @media only screen and (max-width:768px) {
-    #track {
+    #artist {
         .container header {
             flex-direction: column;
             justify-content: flex-start;
