@@ -39,7 +39,7 @@
     "typescript": "3.7.2"
   },
   "scripts": {
-    "start": "npm install -g serve && serve -s build && cd/server node index.js",
+    "start": "npm install -g serve && serve -s build ",
     "build": "react-scripts build",
     "test": "react-scripts test /*.test.tsx ",
     "eject": "react-scripts eject"
