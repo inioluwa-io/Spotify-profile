@@ -10,15 +10,16 @@ interface IHomeWrapper {
   profileImage: any;
   followers: string;
   following: string;
+  name: string;
   playlists: string;
-  artists: [any];
+  artists: any;
   tracks: [any];
 }
 
-const ProfilePicture: React.FC<any> = ({ image }) =>
-  image.length ? (
+const ProfilePicture: React.FC<any> = ({ images }) =>
+  images.length ? (
     <div className="image">
-      <img src={image} alt="profile" />
+      <img src={images[0].url} alt="avatar" />
     </div>
   ) : (
     <div className="image border">
@@ -31,6 +32,7 @@ const HomeWrapper: React.FC<any> = ({
   following,
   followers,
   playlists,
+  name,
   tracks,
   artists,
   ...props
@@ -40,9 +42,9 @@ const HomeWrapper: React.FC<any> = ({
       <SEO title="Spotify profile" description="" />
       <div className="container">
         <div className="profile">
-          <ProfilePicture image={profileImage} />
+          <ProfilePicture images={profileImage} />
           <div className="profile_details">
-            <h2>Inioluwa Sogelola</h2>
+            <h2>{name}</h2>
             <ul>
               <li>
                 <span>{followers}</span>
@@ -65,11 +67,13 @@ const HomeWrapper: React.FC<any> = ({
             title="Top Tracks of All Time"
             path="/tracks"
           />
-          <TopArtists
-            artists={artists}
-            title="Top Artists of All Time"
-            path="/artists"
-          />
+          {artists.total && (
+            <TopArtists
+              artists={artists}
+              title="Top Artists of All Time"
+              path="/artists"
+            />
+          )}
         </aside>
       </div>
     </main>

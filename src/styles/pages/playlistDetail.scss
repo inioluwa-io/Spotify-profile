@@ -1,6 +1,6 @@
 @import "../utils/variables.scss";
 
-#track_details {
+#playlist_details {
     display: flex;
     width: 100%;
 
@@ -41,27 +41,19 @@
                 text-align: center;
                 margin: 10px;
 
-                a {
-                    display: inline-block;
-                    font-size: 12px;
-                    margin-top: 30px;
-                    width: fit-content;
-                }
-
                 h2 {
                     font-size: 30px;
                     margin-bottom: 10px;
                 }
 
                 p {
-                    font-size: 18px;
+                    margin-top: 10px;
+                    font-size: 15px;
                     font-family: 'Nunito sans';
-                    margin-bottom: 10px;
                     font-weight: 500;
                 }
 
                 span {
-                    margin-top: 7px;
                     font-family: 'Nunito sans';
                     color: $dimgray;
                     font-size: 14px;
@@ -97,7 +89,7 @@
 }
 
 @media only screen and (max-width:1125px) {
-    #track_details {
+    #playlist_details {
         .container {
 
             .profile {
@@ -112,7 +104,7 @@
 }
 
 @media only screen and (max-width:848px) {
-    #track_details {
+    #playlist_details {
         .container {
             margin: 50px 0 50px 0;
             width: calc(100% - 0px);
@@ -129,7 +121,7 @@
 }
 
 @media only screen and (max-width:512px) {
-    #track_details {
+    #playlist_details {
         .container {
             margin: 50px 0 50px 0;
             grid-template-columns: none;

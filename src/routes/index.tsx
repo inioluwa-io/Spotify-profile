@@ -9,11 +9,13 @@ import Navbar from "../components/navbar";
 import Artists from "./private/artists";
 import Playlists from "./private/playlists";
 import TrackDetails from "./private/trackDetails";
+import PlaylistDetails from "./private/playlistDetail";
+import { token } from "../components/spotify";
 
 // Gets user authenticated status
-const checkAuth = (): boolean => {
-  return window.localStorage.getItem("loginToken") ? true : false;
-};
+// const checkAuth = (): boolean => {
+//   return window.localStorage.getItem("loginToken") ? true : false;
+// };
 
 interface IComponent {
   component: React.FC<any>;
@@ -27,7 +29,7 @@ const AuthRoute: React.FC<any> = ({
   <Route
     {...rest}
     render={props =>
-      checkAuth() ? (
+      token ? (
         <Component {...props} />
       ) : (
         <Redirect to={{ pathname: "/login" }} />
@@ -45,11 +47,7 @@ const AuthRouteRedirect: React.FC<any> = ({
   <Route
     {...rest}
     render={props =>
-      checkAuth() ? (
-        <Redirect to={{ pathname: to }} />
-      ) : (
-        <Component {...props} />
-      )
+      token ? <Redirect to={{ pathname: to }} /> : <Component {...props} />
     }
   />
 );
@@ -63,22 +61,23 @@ const Routes: React.FC = () => {
       const html: any = document.querySelector("html");
       html.style.overflow = "visible";
       setIsLoading(false);
-    }, 3500);
+    }, 3200);
 
     return () => clearTimeout(loaderTimeout);
   }, []);
-
+  
   return (
     <>
       {isLoading && <Loader />}
       <div id="__container">
-        {checkAuth() && <Navbar />}
+        {token && <Navbar />}
         <Switch>
           <AuthRoute exact path="/" component={Home} />
           <AuthRoute path="/artists" component={Artists} />
           <AuthRoute path="/tracks" component={Tracks} />
           <AuthRoute path="/track/:id" component={TrackDetails} />
           <AuthRoute path="/playlists" component={Playlists} />
+          <AuthRoute path="/playlist/:id" component={PlaylistDetails} />
           <AuthRouteRedirect to="/" path="/login" component={Login} />
 
           {/* Private routes */}

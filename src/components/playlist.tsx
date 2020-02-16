@@ -8,7 +8,7 @@ const Playlist: React.FC<any> = ({ playlists }) => {
     <ul className="playlist grid grid-20 grid-col-5">
       {playlists.map((playlist: any, index: number) => (
         <li key={index}>
-          <Link to="playlist/">
+          <Link to={`playlist/${index}`}>
             <div className="column">
               <div className="image">
                 <img src={playlist.albumArt} alt="" />

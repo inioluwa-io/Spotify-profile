@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TrackDetailsWrapper from "./trackDetailsWrapper";
-import dp1 from "../../../assets/249921.jpg";
-import dp4 from "../../../assets/inscription_motivation_dark_background_texture_119598_3840x2400.jpg";
+import { getTrackInfo } from "../../../components/spotify";
+import Spinner from "../../../components/spinner";
 
-const track = {
-  title: "Lucid Dreams",
-  album: "Goodbye & Good Riddance",
-  artist: "Juice WRLD",
-  albumArt: dp1,
-  year: "2018"
-};
-const TrackDetails: React.FC<any> = () => {
+const TrackDetails: React.FC<any> = ({ match }) => {
+  const [trackDetails, setTrackDetails] = useState();
+
+  useEffect(() => {
+    const fetchTrack = async () => {
+      const trackId = match.params.id;
+      try {
+        const { track, audioAnalysis, audioFeatures } = await getTrackInfo(
+          trackId
+        );
+        setTrackDetails({ track, audioAnalysis, audioFeatures });
+      } catch (e) {
+        console.warn(e + "error");
+      }
+    };
+    
+    let current = true;
+    if (current) fetchTrack();
+    return () => {
+      current = false;
+    };
+  }, [match.params.id]);
+
+  if (!trackDetails) {
+    return <Spinner />;
+  }
+  
+  const { track, audioAnalysis, audioFeatures } = trackDetails;
+
   return (
     <TrackDetailsWrapper
-      title={track.title}
+      name={track.name}
       album={track.album}
       year={track.year}
-      artist={track.artist}
-      albumArt={track.albumArt}
+      artist={track.artists}
     />
   );
 };

@@ -2,6 +2,11 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import SEO from "../../components/seo";
 
+const LOGIN_URI =
+  process.env.NODE_ENV !== 'production'
+    ? 'http://localhost:8888/login'
+    : 'https://spotify-profile.herokuapp.com/login';
+
 const Login: React.FC<any> = () => {
   const randomToken = (length: number = 12): string => {
     let character: string =
@@ -15,9 +20,8 @@ const Login: React.FC<any> = () => {
   };
 
   const login = async () => {
-    const token = randomToken(31);
-    await window.localStorage.setItem("loginToken", token);
-    window.location.pathname = "/";
+    window.location.href = LOGIN_URI;
+    // await window.localStorage.setItem("loginToken", token);
     return <Redirect to={{ pathname: "/" }} />;
   };
 

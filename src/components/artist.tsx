@@ -8,10 +8,10 @@ const Artist: React.FC<any> = ({ artists }) => {
     <ul className="artists grid grid-20 grid-col-5">
       {artists.map((artist: any, index: number) => (
         <li key={index}>
-          <Link to="artist/">
+          <Link to={`artist/${artist.id}`}>
             <div className="column">
               <div className="image">
-                <img src={artist.albumArt} alt="" />
+                <img src={artist.images.url[2]} alt="" />
               </div>
               <div className="artist_details ">
                 <p>{artist.name}</p>

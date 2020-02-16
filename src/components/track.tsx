@@ -3,15 +3,28 @@ import { Link } from "react-router-dom";
 import { Icon } from "@mdi/react";
 import { mdiInformation } from "@mdi/js";
 import "../styles/components/tracks.scss";
+import { formatDuration } from "../components/utils";
 
 const TrackAlbum: React.FC<any> = ({ album, artist }) => {
-  if (artist)
+  if (album)
     return (
       <span>
-        {artist} &#8231; {album}
+        {artist.map(({ name }: any, i: number) => (
+          <span key={i}>
+            {name}
+            {artist.length > 0 && i === artist.length - 1 ? " " : ", "}
+          </span>
+        ))}
+        &#8231; {album.name}
       </span>
     );
-  return <span> {artist} </span>;
+  return (
+    <span>
+      {artist.map(({ name }: any, i: number) => (
+        <span key={i}>{name}</span>
+      ))}
+    </span>
+  );
 };
 
 const Track: React.FC<any> = ({ tracks }) => {
@@ -19,10 +32,10 @@ const Track: React.FC<any> = ({ tracks }) => {
     <ul className="tracks">
       {tracks.map((track: any, index: number) => (
         <li key={index}>
-          <Link to={`track/${index}`}>
+          <Link to={`/track/${track.id}`}>
             <div className="row">
               <div className="image">
-                <img src={track.albumArt} alt="" />
+                <img src={track.album.images[2].url} alt="Album Artwork" />
                 <div className="info">
                   <Icon
                     path={mdiInformation}
@@ -33,11 +46,11 @@ const Track: React.FC<any> = ({ tracks }) => {
                 </div>
               </div>
               <div className="column track_details ">
-                <p>{track.title}</p>
-                <TrackAlbum artist={track.artist} album={track.album} />
+                <p>{track.name}</p>
+                <TrackAlbum artist={track.artists} album={track.album} />
               </div>
               <div className="column track_details time">
-                <span className="">{track.time}</span>
+                <span className="">{formatDuration(track.duration_ms)}</span>
                 <span></span>
               </div>
             </div>

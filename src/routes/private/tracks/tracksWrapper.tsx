@@ -16,7 +16,6 @@ const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const ToggleTabs: React.FC<any> = () => {
-    console.log(selectedTab);
     if (selectedTab === 0) return <Track tracks={tracks} />;
     else if (selectedTab === 1) return <Track tracks={tracks} />;
     else if (selectedTab === 2) return <Track tracks={tracks} />;
