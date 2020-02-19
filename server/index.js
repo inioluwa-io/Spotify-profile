@@ -17,6 +17,7 @@ var client_id = "a7c9168a374f432eb44a954c5f66081f"; // Your client id
 var client_secret = "ad261774fdd64e7b97688105d08765e0"; // Your secret
 var redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback/"; // Your redirect uri
 var FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000/"; // Your redirect uri
+const PORT = process.env.PORT || 8888;
 
 if (process.env.NODE_ENV !== 'production') {
   redirect_uri = 'http://localhost:8888/callback/';
@@ -160,6 +161,6 @@ app.get("/refresh_token", function(req, res) {
     }
   });
 });
-
-console.log("Listening on 8888");
-app.listen(8888);
+app.listen(PORT, function() {
+  console.warn(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
+});
