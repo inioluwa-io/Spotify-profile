@@ -3,9 +3,9 @@ import { Redirect } from "react-router-dom";
 import SEO from "../../components/seo";
 
 const LOGIN_URI =
-  process.env.NODE_ENV !== 'production'
-    ? 'http://localhost:8888/login'
-    : 'https://my-spotify-profile.herokuapp.com:8888/login';
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8888/login"
+    : "https://my-spotify-profile.herokuapp.com:8888/login";
 
 const Login: React.FC<any> = () => {
   const randomToken = (length: number = 12): string => {
@@ -27,7 +27,10 @@ const Login: React.FC<any> = () => {
 
   return (
     <section id="login" className="page-container">
-      <SEO title="Log in | Spotify profile " description="Log in to your spotidy profile" />
+      <SEO
+        title="Log in | Spotify profile "
+        description="Log in to your spotidy profile"
+      />
       <div id="logo">
         <p>Spotify</p>
         <span>profile</span>

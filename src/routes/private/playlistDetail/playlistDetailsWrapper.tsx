@@ -20,11 +20,11 @@ const PlaylistDetailsWrapper: React.FC<any> = ({
           <div className="profile_details">
             <h2>{name}</h2>
             <span> By {author}</span>
-            <p>{tracks.length} Tracks</p>
+            <p>{tracks.total} Tracks</p>
           </div>
         </div>
         <aside className="">
-          <Track tracks = {tracks}/>
+          <Track tracks = {tracks.items} target = 'track'/>
         </aside>
       </div>
     </main>

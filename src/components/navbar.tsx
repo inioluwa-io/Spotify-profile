@@ -13,7 +13,7 @@ import "../styles/components/navbar.scss";
 
 const Navbar: React.FC<{}> = () => {
   return (
-    <>
+    <React.Fragment>
       <header id="nav_header" role="navigation">
         <button
           onClick={() => {
@@ -79,7 +79,7 @@ const Navbar: React.FC<{}> = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </React.Fragment>
   );
 };
 export default Navbar;

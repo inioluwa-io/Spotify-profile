@@ -15,8 +15,13 @@ var cookieParser = require("cookie-parser");
 
 var client_id = "a7c9168a374f432eb44a954c5f66081f"; // Your client id
 var client_secret = "ad261774fdd64e7b97688105d08765e0"; // Your secret
-var redirect_uri = "http://localhost:8888/callback/"; // Your redirect uri
-var FRONTEND_URI = "http://localhost:3000/"; // Your redirect uri
+var redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback/"; // Your redirect uri
+var FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000/"; // Your redirect uri
+
+if (process.env.NODE_ENV !== 'production') {
+  redirect_uri = 'http://localhost:8888/callback/';
+  FRONTEND_URI = 'http://localhost:3000/';
+}
 
 /**
  * Generates a random string containing numbers and letters

@@ -59,8 +59,10 @@
 
         .time {
             flex: none;
+            justify-content: flex-start;
             text-align: right;
             vertical-align: middle;
+            margin-top: 5px;
 
             span {
                 margin: 0 !important;

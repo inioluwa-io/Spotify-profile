@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import dp from "../../../assets/brooks-leibee-562087-unsplash.jpg";
 import HomeWrapper from "./homeWrapper";
 import { getUserInfo } from "../../../components/spotify";
 import Spinner from "../../../components/spinner";

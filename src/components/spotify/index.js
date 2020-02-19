@@ -42,6 +42,7 @@ const refreshAccessToken = async () => {
 // Get access token off of query params (called on application init)
 export const getAccessToken = () => {
   const { error, access_token, refresh_token } = getHashParams();
+  
   // Remove trailing hash from URI
   removeHash();
 
@@ -56,8 +57,8 @@ export const getAccessToken = () => {
     refreshAccessToken();
   }
 
-  const localAccessToken = getLocalAccessToken();
   const localRefreshToken = getLocalRefreshToken();
+  const localAccessToken = getLocalAccessToken();
 
   if (!localAccessToken || localAccessToken === "undefined") {
     setLocalAccessToken(access_token);

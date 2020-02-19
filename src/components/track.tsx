@@ -27,36 +27,41 @@ const TrackAlbum: React.FC<any> = ({ album, artist }) => {
   );
 };
 
-const Track: React.FC<any> = ({ tracks }) => {
+const Track: React.FC<any> = ({ tracks, target = null }) => {
   return (
     <ul className="tracks">
-      {tracks.map((track: any, index: number) => (
-        <li key={index}>
-          <Link to={`/track/${track.id}`}>
-            <div className="row">
-              <div className="image">
-                <img src={track.album.images[2].url} alt="Album Artwork" />
-                <div className="info">
-                  <Icon
-                    path={mdiInformation}
-                    size={1.5}
-                    color="#fff"
-                    aria-label="info"
-                  />
+      {tracks.map((track: any, index: number) => {
+        if (target) {
+          track = track[target];
+        }
+        return (
+          <li key={index}>
+            <Link to={`/track/${track.id}`}>
+              <div className="row">
+                <div className="image">
+                  <img src={track.album.images[2].url} alt="Album Artwork" />
+                  <div className="info">
+                    <Icon
+                      path={mdiInformation}
+                      size={1.5}
+                      color="#fff"
+                      aria-label="info"
+                    />
+                  </div>
+                </div>
+                <div className="column track_details ">
+                  <p>{track.name}</p>
+                  <TrackAlbum artist={track.artists} album={track.album} />
+                </div>
+                <div className="column track_details time">
+                  <span className="">{formatDuration(track.duration_ms)}</span>
+                  <span></span>
                 </div>
               </div>
-              <div className="column track_details ">
-                <p>{track.name}</p>
-                <TrackAlbum artist={track.artists} album={track.album} />
-              </div>
-              <div className="column track_details time">
-                <span className="">{formatDuration(track.duration_ms)}</span>
-                <span></span>
-              </div>
-            </div>
-          </Link>
-        </li>
-      ))}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 };

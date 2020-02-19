@@ -5,21 +5,27 @@ import Tab from "../../../components/tabs";
 import Track from "../../../components/track";
 
 interface ITracks {
-  tracks: [any];
+  tracksShort: [any];
+  tracksMedium: [any];
+  tracksLong: [any];
 }
 
 interface IToggleTabs {
   selectedTab: number;
   data: [any];
 }
-const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
+const TracksWrapper: React.FC<any> = ({
+  tracksShort,
+  tracksMedium,
+  tracksLong
+}: ITracks) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const ToggleTabs: React.FC<any> = () => {
-    if (selectedTab === 0) return <Track tracks={tracks} />;
-    else if (selectedTab === 1) return <Track tracks={tracks} />;
-    else if (selectedTab === 2) return <Track tracks={tracks} />;
-    else return <></>;
+    if (selectedTab === 0) return <Track tracks={tracksLong} />;
+    else if (selectedTab === 1) return <Track tracks={tracksShort} />;
+    else if (selectedTab === 2) return <Track tracks={tracksMedium} />;
+    else return <Track tracks={tracksLong} />;
   };
 
   return (
@@ -36,7 +42,7 @@ const TracksWrapper: React.FC<any> = ({ tracks }: ITracks) => {
             }}
           />
         </header>
-        <ToggleTabs selectedTab={selectedTab} data={tracks} />
+        <ToggleTabs selectedTab={selectedTab} />
       </div>
     </main>
   );

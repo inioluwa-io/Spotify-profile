@@ -8,14 +8,14 @@ const Playlist: React.FC<any> = ({ playlists }) => {
     <ul className="playlist grid grid-20 grid-col-5">
       {playlists.map((playlist: any, index: number) => (
         <li key={index}>
-          <Link to={`playlist/${index}`}>
+          <Link to={`playlist/${playlist.id}`}>
             <div className="column">
               <div className="image">
-                <img src={playlist.albumArt} alt="" />
+                <img src={playlist.images[0].url} alt="" />
               </div>
               <div className="playlist_details ">
                 <p>{playlist.name}</p>
-                <span>{playlist.no_of_tracks} Tracks</span>
+                <span>{playlist.tracks.total} Tracks</span>
               </div>
             </div>
           </Link>

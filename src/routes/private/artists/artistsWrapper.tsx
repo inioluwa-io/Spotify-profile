@@ -5,22 +5,19 @@ import Tab from "../../../components/tabs";
 import Artist from "../../../components/artist";
 
 interface IArtist {
-  artists: [any];
+  artistsShort: [any];
+  artistsMedium: [any];
+  artistsLong: [any];
 }
 
-interface IToggleTabs {
-  selectedTab: number;
-  data: [any];
-}
-const ArtistWrapper: React.FC<any> = ({ artists }: IArtist) => {
+const ArtistWrapper: React.FC<any> = ({ artistsShort, artistsMedium, artistsLong }: IArtist) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const ToggleTabs: React.FC<any> = () => {
-    console.log(selectedTab);
-    if (selectedTab === 0) return <Artist artists={artists} />;
-    else if (selectedTab === 1) return <Artist artists={artists} />;
-    else if (selectedTab === 2) return <Artist artists={artists} />;
-    else return <></>;
+    if (selectedTab === 0) return <Artist artists={artistsLong} />;
+    else if (selectedTab === 1) return <Artist artists={artistsShort} />;
+    else if (selectedTab === 2) return <Artist artists={artistsMedium} />;
+    else return <Artist artists={artistsLong} />;
   };
 
   return (
