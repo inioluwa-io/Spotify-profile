@@ -33,7 +33,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-range": "^1.4.6",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.2.0",
     "react-shimmer-effect": "^1.0.9",
     "request": "^2.88.0",
     "typescript": "3.7.2"
@@ -41,7 +41,7 @@
   "scripts": {
     "start": "react-scripts start && node server/index.js",
     "start:dev": "npm install -g serve && serve -s build ",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node server/index.js",
     "test": "react-scripts test /*.test.tsx ",
     "eject": "react-scripts eject"
   },
