@@ -82,7 +82,6 @@ const Routes: React.FC = () => {
 
           {/* Private routes */}
           <AuthRoute path="/settings" component={Home} />
-          <Route path="*" render={() => <NotFound />} />
         </Switch>
       </div>
       <Switch>
