@@ -5,7 +5,7 @@ import SEO from "../../components/seo";
 const LOGIN_URI =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:8888/login"
-    : "https://my-spotify-profile.herokuapp.com:8888/login";
+    : "https://my-spotify-profile.herokuapp.com/login";
 
 const Login: React.FC<any> = () => {
   const randomToken = (length: number = 12): string => {
