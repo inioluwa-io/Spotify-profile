@@ -74,7 +74,7 @@ if (cluster.isMaster) {
       history({
         verbose: true,
         rewrites: [
-          { from: /\/login/, to: '/login' },
+          { from: /\/spotifylogin/, to: '/spotifylogin' },
           { from: /\/callback/, to: '/callback' },
           { from: /\/refresh_token/, to: '/refresh_token' },
         ],
@@ -86,7 +86,7 @@ if (cluster.isMaster) {
     res.render(path.resolve(__dirname, '../client/build/index.html'));
   });
 
-  app.get("/login", function(req, res) {
+  app.get("/spotifylogin", function(req, res) {
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
@@ -202,7 +202,7 @@ if (cluster.isMaster) {
   app.get('*', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
   });
-  
+
   app.listen(PORT, function() {
     console.warn(
       `Node cluster worker ${process.pid}: listening on port ${PORT}`
