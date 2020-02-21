@@ -46,7 +46,7 @@
     "deploy": "serve -s build",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server",
-    "heroku-postbuild": "cd client/ && npm run && npm run install --production && npm run deploy"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
