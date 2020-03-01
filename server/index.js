@@ -63,28 +63,28 @@ if (cluster.isMaster) {
   });
 } else {
   var app = express();
-  
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+  app.use(express.static(path.resolve(__dirname, "../client/build")));
 
   app
-    .use(express.static(path.resolve(__dirname, '../client/build')))
+    .use(express.static(path.resolve(__dirname, "../client/build")))
     .use(cors())
     .use(cookieParser())
     .use(
       history({
         verbose: true,
         rewrites: [
-          { from: /\/spotifylogin/, to: '/spotifylogin' },
-          { from: /\/callback/, to: '/callback' },
-          { from: /\/refresh_token/, to: '/refresh_token' },
-        ],
-      }),
+          { from: /\/spotifylogin/, to: "/spotifylogin" },
+          { from: /\/callback/, to: "/callback" },
+          { from: /\/refresh_token/, to: "/refresh_token" }
+        ]
+      })
     )
-    .use(express.static(path.resolve(__dirname, '../client/build')));
+    .use(express.static(path.resolve(__dirname, "../client/build")));
 
-  // app.get('/', function(req, res) {
-  //   res.render(path.resolve(__dirname, '../client/build/index.html'));
-  // });
+  app.get("/", function(req, res) {
+    res.render(path.resolve(__dirname, "../client/build/index.html"));
+  });
 
   app.get("/spotifylogin", function(req, res) {
     var state = generateRandomString(16);
@@ -199,8 +199,10 @@ if (cluster.isMaster) {
     });
   });
   // All remaining requests return the React app, so it can handle routing.
-  app.get('*', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
+  app.get("*", function(request, response) {
+    response.sendFile(
+      path.resolve(__dirname, "../client/public", "index.html")
+    );
   });
 
   app.listen(PORT, function() {
