@@ -22,7 +22,7 @@ const Login: React.FC<any> = () => {
   const login = async () => {
     window.location.href = LOGIN_URI;
     // await window.localStorage.setItem("loginToken", token);
-    return <Redirect to={{ pathname: "/" }} />;
+    // return <Redirect to={{ pathname: "/" }} />;
   };
 
   return (

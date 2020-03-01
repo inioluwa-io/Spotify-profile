@@ -82,9 +82,9 @@ if (cluster.isMaster) {
     )
     .use(express.static(path.resolve(__dirname, '../client/build')));
 
-  // app.get('/', function(req, res) {
-  //   res.render(path.resolve(__dirname, '../client/build/index.html'));
-  // });
+  app.get('/', function(req, res) {
+    res.render(path.resolve(__dirname, '../client/build/index.html'));
+  });
 
   app.get("/spotifylogin", function(req, res) {
     var state = generateRandomString(16);
