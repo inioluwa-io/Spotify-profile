@@ -4,7 +4,7 @@ import SEO from "../../components/seo";
 
 const LOGIN_URI =
   process.env.NODE_ENV !== "production"
-    ? "http://localhost:8888/login"
+    ? "http://localhost:8888/spotifylogin"
     : "https://my-spotify-profile.herokuapp.com/spotifylogin";
 
 const Login: React.FC<any> = () => {
